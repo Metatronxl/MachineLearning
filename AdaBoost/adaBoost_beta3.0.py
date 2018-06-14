@@ -71,7 +71,7 @@ def adaBoostTrainDS(dataArr,classLabels,numIt=40): # 单层决策树(decision st
         expon = multiply(-1*alpha*mat(classLabels).T,classEst)
         D= multiply(D,exp(expon))
         D = D/D.sum()
-        aggClassEst += alpha*classEst #将错误率累加计算,可以更好的估计出这个值是否是错误的
+        aggClassEst += alpha*classEst #将错误率累加计算,可以更好的估计出这个值是对的还是错误的
         print "aggClassEst: ",aggClassEst.T
 
         aggErrors = multiply(sign(aggClassEst) != mat(classLabels).T,ones((m,1))) # numpy.sign() 大于0的返回1,小于0的返回-1 ,等于0的返回0
